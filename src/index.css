@@ -1,0 +1,12 @@
+/* ==========================================================================
+   Kids Nest - index.css
+   All global styles now live in global.css (imported in main.jsx).
+   This file is intentionally minimal so the Vite template defaults
+   (1126px boxed layout, centered text, 18px root font, dark mode colors)
+   can no longer override the site design.
+   ========================================================================== */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

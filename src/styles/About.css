@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Kids Nest - About Section (no image, fully responsive)
+   All About responsive rules live HERE only (not in global.css)
+   ========================================================================== */
+
+.about-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(48px, 8vw, 96px) clamp(16px, 5vw, 60px);
+  background:
+    radial-gradient(circle at 12% 40%, rgba(223, 153, 98, 0.16), transparent 55%),
+    radial-gradient(circle at 92% 90%, rgba(124, 142, 120, 0.12), transparent 50%);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+/* ---------- Story column ---------- */
+.about-content {
+  min-width: 0;
+  max-width: 600px;
+}
+
+.about-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 20px;
+  margin-bottom: clamp(14px, 2vw, 20px);
+  background: rgba(196, 103, 58, 0.12);
+  color: var(--primary);
+  border: 1px solid rgba(196, 103, 58, 0.2);
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.about-title {
+  font-size: clamp(1.8rem, 3.2vw + 0.8rem, 3rem);
+  color: var(--dark-brown);
+  line-height: 1.15;
+  margin-bottom: clamp(14px, 2vw, 22px);
+  text-wrap: balance;
+}
+
+.about-text {
+  color: var(--text-muted);
+  font-size: clamp(0.98rem, 0.4vw + 0.92rem, 1.1rem);
+  line-height: 1.8;
+  margin-bottom: clamp(22px, 3vw, 32px);
+}
+
+.about-text strong {
+  color: var(--dark-brown);
+}
+
+/* Stats row */
+.about-stats {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(18px, 3vw, 36px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(196, 103, 58, 0.18);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-item + .stat-item {
+  padding-left: clamp(18px, 3vw, 36px);
+  border-left: 1px solid rgba(196, 103, 58, 0.18);
+}
+
+.stat-value {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  line-height: 1.1;
+  color: var(--primary);
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ---------- Value cards ---------- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+  align-items: start;
+  min-width: 0;
+}
+
+.value-card {
+  height: 100%;
+  background: #fff;
+  padding: clamp(18px, 2.2vw, 26px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(196, 103, 58, 0.12);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* staggered look on desktop only */
+.value-card:nth-child(even) {
+  margin-top: 32px;
+}
+
+.value-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(196, 103, 58, 0.35);
+}
+
+.value-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  color: var(--primary);
+  background: linear-gradient(135deg, rgba(196, 103, 58, 0.14), rgba(223, 153, 98, 0.24));
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+  background: var(--primary);
+  color: #fff;
+}
+
+.value-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark-brown);
+  margin-bottom: 4px;
+}
+
+.value-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Tablet (<= 992px): single column, centered, equal-height cards
+   ========================================================================== */
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-content {
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .about-stats {
+    justify-content: center;
+  }
+
+  .stat-item {
+    align-items: center;
+  }
+
+  .values-grid {
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
+    align-items: stretch;
+  }
+
+  /* no stagger on tablet/phone: clean, equal 2x2 grid */
+  .value-card:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .value-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .value-icon {
+    margin-inline: auto;
+  }
+}
+
+/* ==========================================================================
+   Phones (<= 600px): compact 2x2 grid, even stats row
+   ========================================================================== */
+@media (max-width: 600px) {
+  .about-section {
+    padding: 44px 16px;
+  }
+
+  .about-grid {
+    gap: 28px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    padding-top: 20px;
+  }
+
+  .stat-item {
+    padding: 0 6px;
+  }
+
+  .stat-item + .stat-item {
+    padding-left: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .values-grid {
+    gap: 12px;
+  }
+
+  .value-card {
+    padding: 18px 12px;
+    border-radius: var(--radius-md);
+  }
+
+  .value-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+  }
+
+  .value-title {
+    font-size: 0.98rem;
+  }
+
+  .value-text {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+}
+
+/* ==========================================================================
+   Very small phones (<= 340px): single column
+   ========================================================================== */
+@media (max-width: 340px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+}

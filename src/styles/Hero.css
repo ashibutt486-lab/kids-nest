@@ -1,0 +1,252 @@
+/* ==========================================================================
+   Kids Nest - Hero with full background image (fluid, responsive)
+   All hero responsive rules live HERE only (not in global.css)
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: clamp(540px, 82vh, 800px);
+  padding: clamp(56px, 8vw, 110px) clamp(16px, 5vw, 60px) clamp(72px, 9vw, 120px);
+  overflow: hidden;
+  /* layers: dark warm overlay -> photo -> fallback gradient (if photo fails) */
+  background:
+    linear-gradient(100deg, rgba(45, 23, 11, 0.9) 0%, rgba(45, 23, 11, 0.68) 42%, rgba(45, 23, 11, 0.2) 100%),
+    var(--hero-bg, none) 70% center / cover no-repeat,
+    linear-gradient(135deg, #4a2817, #c4673a);
+}
+
+/* soft fade into the cream page background */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(40px, 6vw, 80px);
+  background: linear-gradient(to bottom, rgba(253, 248, 242, 0), var(--bg-cream));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  max-width: 640px;
+  min-width: 0;
+}
+
+/* ---------- Tag ---------- */
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ---------- Title & subtitle ---------- */
+.hero-title {
+  font-size: clamp(2.1rem, 4vw + 1rem, 4rem);
+  color: #fff;
+  line-height: 1.12;
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+  letter-spacing: -0.5px;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 0.4vw + 0.95rem, 1.2rem);
+  color: rgba(255, 253, 250, 0.88);
+  margin-bottom: clamp(24px, 3vw, 38px);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+/* ---------- Buttons ---------- */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+
+.btn-hero-primary {
+  background: var(--primary);
+  color: #fff;
+  padding: 16px 38px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 10px 25px var(--primary-glow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: var(--transition-smooth);
+}
+
+.btn-hero-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(196, 103, 58, 0.45);
+}
+
+.btn-hero-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  padding: 14px 34px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: var(--transition-smooth);
+}
+
+.btn-hero-secondary:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.btn-hero-primary:focus-visible,
+.btn-hero-secondary:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Trust badges ---------- */
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  padding-top: 24px;
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Tablet (<= 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: clamp(520px, 70vh, 700px);
+    background:
+      linear-gradient(100deg, rgba(45, 23, 11, 0.9) 0%, rgba(45, 23, 11, 0.74) 55%, rgba(45, 23, 11, 0.42) 100%),
+      var(--hero-bg, none) 62% center / cover no-repeat,
+      linear-gradient(135deg, #4a2817, #c4673a);
+  }
+
+  .hero-content {
+    max-width: 600px;
+  }
+}
+
+/* ==========================================================================
+   Large phones (<= 768px): centered content, vertical overlay
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 0;
+    justify-content: center;
+    background:
+      linear-gradient(180deg, rgba(45, 23, 11, 0.78) 0%, rgba(45, 23, 11, 0.7) 50%, rgba(45, 23, 11, 0.9) 100%),
+      var(--hero-bg, none) 65% center / cover no-repeat,
+      linear-gradient(135deg, #4a2817, #c4673a);
+  }
+
+  .hero-content {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    margin-inline: auto;
+  }
+
+  .hero-actions,
+  .trust-badges {
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   Phones (<= 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 48px 16px 76px;
+  }
+
+  .hero-tag {
+    font-size: 13px;
+    padding: 7px 16px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    padding: 15px 24px;
+    font-size: 15px;
+  }
+
+  .trust-badges {
+    gap: 12px 20px;
+    padding-top: 20px;
+  }
+
+  .badge-item {
+    font-size: 13px;
+    gap: 8px;
+  }
+}
+
+/* ==========================================================================
+   Very small phones (<= 380px)
+   ========================================================================== */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .badge-item {
+    font-size: 12.5px;
+  }
+}
